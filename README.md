@@ -1,4 +1,5 @@
-# Marketplace Auth Manager
+﻿# Marketplace Auth Manager
+> **Portfolio context:** Extracted from founder-led production systems — multi-marketplace inventory, orders, and warehouse execution. **[Full portfolio](https://github.com/AspiranteD)** · [aspiranted.github.io](https://aspiranted.github.io)
 
 Multi-account authentication library for cookie-based marketplace APIs. Manages the full lifecycle: JWT decoding, cookie storage/validation, automatic token refresh via session cookies, and thread-safe multi-account coordination.
 
