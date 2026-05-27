@@ -10,6 +10,7 @@ Thread-safe manager that coordinates:
 import threading
 import logging
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Optional, Dict, Callable, Tuple, List
 
 from src.token.jwt_utils import is_token_expired
@@ -142,9 +143,7 @@ class AccountAuthManager:
             return None
 
         if stored.access_token and not is_token_expired(stored.access_token):
-            stored.last_used_at = __import__("datetime").datetime.now(
-                __import__("datetime").timezone.utc
-            )
+            stored.last_used_at = datetime.now(timezone.utc)
             self._persist(stored)
 
             if validate_hash:
