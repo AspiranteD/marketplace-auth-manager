@@ -1,5 +1,5 @@
-﻿# Marketplace Auth Manager
-> **Portfolio context:** Extracted from founder-led production systems — multi-marketplace inventory, orders, and warehouse execution. **[Full portfolio](https://github.com/AspiranteD)** · [aspiranted.github.io](https://aspiranted.github.io)
+# Marketplace Auth Manager
+> **Portfolio context:** Extracted from founder-led production systems � multi-marketplace inventory, orders, and warehouse execution. **[Full portfolio](https://github.com/AspiranteD/AspiranteD)** � [aspiranted.github.io](https://aspiranted.github.io)
 
 Multi-account authentication library for cookie-based marketplace APIs. Manages the full lifecycle: JWT decoding, cookie storage/validation, automatic token refresh via session cookies, and thread-safe multi-account coordination.
 
@@ -9,13 +9,13 @@ Extracted from a production system that manages 10+ marketplace accounts simulta
 
 ```
 src/
-├── token/
-│   └── jwt_utils.py          # JWT payload decoding (no signature verification)
-├── cookies/
-│   ├── cookie_store.py        # Cookie storage, extraction, hash matching
-│   └── cookie_refresher.py    # Token refresh via session cookies with retry
-└── accounts/
-    └── account_manager.py     # Thread-safe multi-account coordination
++-- token/
+�   +-- jwt_utils.py          # JWT payload decoding (no signature verification)
++-- cookies/
+�   +-- cookie_store.py        # Cookie storage, extraction, hash matching
+�   +-- cookie_refresher.py    # Token refresh via session cookies with retry
++-- accounts/
+    +-- account_manager.py     # Thread-safe multi-account coordination
 ```
 
 ## Key Features
@@ -34,7 +34,7 @@ src/
 
 ### Token Refresher (`cookie_refresher.py`)
 - Refreshes access tokens by hitting the auth endpoint with stored session cookies
-- **3-layer token extraction**: response cookies → `Set-Cookie` headers → existing valid token fallback
+- **3-layer token extraction**: response cookies ? `Set-Cookie` headers ? existing valid token fallback
 - Configurable retry with delay between attempts
 - Framework-agnostic: accepts injectable `http_get` function for testing
 - Returns structured `RefreshResult` with success/error details
@@ -42,10 +42,10 @@ src/
 ### Account Manager (`account_manager.py`)
 - Thread-safe account registry with lock-protected access
 - Callback-driven architecture (no database dependency):
-  - `load_accounts_fn` — fetch accounts from any source
-  - `load_cookies_fn` — load stored cookies per account
-  - `persist_cookies_fn` — save updated cookies
-  - `validate_token_fn` — verify token belongs to correct account
+  - `load_accounts_fn` � fetch accounts from any source
+  - `load_cookies_fn` � load stored cookies per account
+  - `persist_cookies_fn` � save updated cookies
+  - `validate_token_fn` � verify token belongs to correct account
 - Automatic refresh on expired tokens
 - Optional hash validation (API hash must match account hash)
 - Legacy method aliases for backward compatibility
@@ -54,7 +54,7 @@ src/
 
 | Decision | Rationale |
 |---|---|
-| JWT parsed without verification | Only need expiry tracking — the server validates signatures |
+| JWT parsed without verification | Only need expiry tracking � the server validates signatures |
 | Callback-driven persistence | Database-agnostic: works with PostgreSQL, SQLite, files, etc. |
 | Injectable HTTP client | Makes testing deterministic without mocking `requests` |
 | publisherId hash extraction | Prevents saving cookies for the wrong account |
